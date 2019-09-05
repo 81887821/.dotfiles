@@ -20,7 +20,7 @@ function get_package_finder() {
             echo "pacman -Qi"
             ;;
         "${UBUNTU}")
-            echo "apt-cache show"
+            echo "dpkg -s"
             ;;
         *)
             die "Unknown distribution: ${distribution}"
