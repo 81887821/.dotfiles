@@ -4,11 +4,11 @@ source "${0%/*}/library/common.sh" 2>/dev/null || source "library/common.sh" || 
 source "${0%/*}/library/path.sh" 2>/dev/null || source "library/path.sh" || exit 1
 source "${0%/*}/library/package.sh" 2>/dev/null || source "library/package.sh" || exit 1
 
-readonly files=(
+readonly dot_files=(
     '.config/fish/config.fish'
     '.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml'
 )
-readonly packages=(
+readonly dot_file_packages=(
     'fish'
     'xfce4'
 )
@@ -57,22 +57,22 @@ function print_usage() {
 }
 
 function link_all() {
-    local number_of_files="${#files[@]}"
+    local number_of_files="${#dot_files[@]}"
     local i=0
 
     while [ $i -lt $number_of_files ]; do
-        make_link "${files[$i]}"
+        make_link "${dot_files[$i]}"
         i=$(expr $i + 1)
     done
 }
 
 function link_installed() {
-    local number_of_files="${#files[@]}"
+    local number_of_files="${#dot_files[@]}"
     local i=0
 
     while [ $i -lt $number_of_files ]; do
-        if is_installed "${packages[$i]}"; then
-            make_link "${files[$i]}"
+        if is_installed "${dot_file_packages[$i]}"; then
+            make_link "${dot_files[$i]}"
         fi
 
         i=$(expr $i + 1)

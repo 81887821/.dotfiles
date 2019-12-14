@@ -12,60 +12,26 @@ function get_linux_distribution() {
     fi
 }
 
-function get_package_finder() {
+function load_functions() {
     local distribution="${1}"
+    local library_path="$(get_absolute_directory_path_of_executable)/library/distributions/${distribution}.sh"
 
-    case "${distribution}" in
-        "${ARCH_LINUX}")
-            echo "pacman -Qi"
-            ;;
-        "${UBUNTU}")
-            echo "dpkg -s"
-            ;;
-        *)
-            die "Unknown distribution: ${distribution}"
-            ;;
-    esac
-}
-
-function get_package_mapping() {
-    local distribution="${1}"
-
-    case "${distribution}" in
-        "${ARCH_LINUX}" | "${UBUNTU}")
-            echo 'default_package_mapping'
-            ;;
-        *)
-            die "Unknown distribution: ${distribution}"
-            ;;
-    esac
-}
-
-function default_package_mapping() {
-    local package="${1}"
-
-    case "${package}" in
-        'fish')
-            echo 'fish'
-            ;;
-        'xfce4')
-            echo 'xfce4-session'
-            ;;
-        *)
-            die "Unknown package: ${package}"
-            ;;
-    esac
+    if [ -f "${library_path}" ]; then
+        source "${library_path}" || die "Loading ${library_path} failed."
+    else
+        die "Library for ${distribution} does not exist."
+    fi
 }
 
 function is_installed() {
     local packages="${@}"
     local distribution="$(get_linux_distribution)"
-    local find_package="$(get_package_finder "${distribution}")"
-    local package_mapping="$(get_package_mapping "${distribution}")"
     local package
 
+    load_functions "${distribution}"
+
     for package in ${packages}; do
-        ${find_package} "$("${package_mapping}" "${package}")" 1>/dev/null 2>/dev/null || return 1
+        $(get_package_finder) "$(package_mapping "${package}")" 1>/dev/null 2>/dev/null || return 1
     done
 
     return 0
