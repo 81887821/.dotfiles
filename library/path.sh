@@ -1,11 +1,15 @@
 #!/bin/bash
 
-function get_absolute_executable_directory() {
+function get_absolute_directory_path_of_executable() {
     local executable_path="${0}"
     local absolute_path
 
     executable_path="${executable_path%/*}"
     if [ "${executable_path}" == "." ]; then
+        # Handle case for "./script.sh"
+        executable_path=""
+    elif [ "${executable_path}" == "${0}" ]; then
+        # Handle case for "bash script.sh"
         executable_path=""
     fi
 

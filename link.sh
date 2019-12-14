@@ -80,7 +80,7 @@ function link_installed() {
 }
 
 function make_link() {
-    local target_file="$(get_absolute_executable_directory)/home/${1}"
+    local target_file="$(get_absolute_directory_path_of_executable)/home/${1}"
     local link_file="${HOME}/${1}"
 
     ln -s ${ln_flags} "$(to_relative_target_path "${target_file}" "${link_file}")" "${link_file}"
