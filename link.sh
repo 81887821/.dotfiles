@@ -7,10 +7,22 @@ source "${0%/*}/library/package.sh" 2>/dev/null || source "library/package.sh" |
 readonly dot_files=(
     '.config/fish/config.fish'
     '.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml'
+    '.config/systemd/user/discord.service'
+    '.config/systemd/user/ibus.service'
+    '.config/systemd/user/vboxhost.service'
+    '.config/systemd/user/vboxviewer@.service'
+    '.config/systemd/user/vboxvm@.service'
+    'bin/vboxvm-stop.sh'
 )
 readonly dot_file_packages=(
     'fish'
     'xfce4'
+    'discord firejail systemd'
+    'ibus systemd'
+    'virtualbox systemd'
+    'virtualbox systemd'
+    'virtualbox systemd'
+    'virtualbox systemd'
 )
 
 link_only_installed=true

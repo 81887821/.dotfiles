@@ -1,0 +1,11 @@
+[Unit]
+Description=Discord
+
+[Service]
+ExecStart=/usr/bin/firejail /opt/discord/Discord
+ExecStop=/bin/bash -c "[ '${MAINPID}' == '' ] || firejail --shutdown=${MAINPID}"
+KillMode=none
+SuccessExitStatus=15
+
+[Install]
+RequiredBy=graphical-session.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=VirtualBox Virtual Machine %i Service
+Requires=vboxhost.service
+After=vboxhost.service
+
+[Service]
+ExecStart=/usr/bin/VBoxHeadless --startvm "%i"
+ExecStop="${HOME}/bin/vboxvm-stop.sh" "%i" "${MAINPID}"
+KillMode=process
+
+[Install]
+WantedBy=default.target

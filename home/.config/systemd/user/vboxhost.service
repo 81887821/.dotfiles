@@ -1,0 +1,6 @@
+[Unit]
+Description=VirtualBox Host Service Daemon
+
+[Service]
+ExecStart=/usr/lib/virtualbox/VBoxSVC
+KillSignal=SIGINT

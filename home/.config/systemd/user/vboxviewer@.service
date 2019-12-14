@@ -1,0 +1,10 @@
+[Unit]
+Description=VirtualBox Virtual Machine %i Viewer Service
+Requisite=vboxvm@%i.service
+After=vboxvm@%i.service
+
+[Service]
+ExecStart=/usr/lib/virtualbox/VirtualBoxVM --startvm %i --separate
+
+[Install]
+WantedBy=graphical-session.target
