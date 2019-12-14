@@ -58,11 +58,15 @@ function default_package_mapping() {
 }
 
 function is_installed() {
-    local package="${1}"
+    local packages="${@}"
     local distribution="$(get_linux_distribution)"
     local find_package="$(get_package_finder "${distribution}")"
     local package_mapping="$(get_package_mapping "${distribution}")"
+    local package
 
-    ${find_package} "$("${package_mapping}" "${package}")" 1>/dev/null 2>/dev/null
-    return $?
+    for package in ${packages}; do
+        ${find_package} "$("${package_mapping}" "${package}")" 1>/dev/null 2>/dev/null || return 1
+    done
+
+    return 0
 }
