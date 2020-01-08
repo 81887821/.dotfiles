@@ -1,6 +1,6 @@
 [Unit]
 Description=Intelligent Input Bus
-PartOf=graphical-sesion.target
+PartOf=graphical-session.target
 Requires=dbus.service
 After=dbus.service
 

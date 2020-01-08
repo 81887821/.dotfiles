@@ -1,5 +1,6 @@
 [Unit]
 Description=Discord
+PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/firejail /opt/discord/Discord
