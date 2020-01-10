@@ -21,7 +21,7 @@
       <property name="Print" type="empty"/>
     </property>
     <property name="custom" type="empty">
-      <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder">
+      <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder --collapsed">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Alt&gt;F2" type="empty">
@@ -37,7 +37,7 @@
       <property name="&lt;Super&gt;2" type="string" value="exo-open --launch FileManager"/>
       <property name="&lt;Super&gt;3" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
-      <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder --collapsed">
+      <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Super&gt;z" type="string" value="xfce4-popup-whiskermenu"/>
