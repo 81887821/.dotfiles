@@ -1,4 +1,7 @@
 set --export DOTNET_CLI_TELEMETRY_OPTOUT 1
+set --export DBUS_SESSION_BUS_ADDRESS unix:path=/run/user/(id -u)/bus
+set --export XDG_RUNTIME_DIR /run/user/(id -u)
+set --export GPG_TTY (tty)
 
 
 if [ -d $HOME/bin ]
@@ -12,6 +15,11 @@ function ls --description 'List contents of directory'
     set param $param --indicator-style=classify
   end
   command ls $param $argv
+end
+
+function make --description 'GNU make utility to maintain groups of programs'
+  set -l param -j(nproc)
+  command make $param $argv
 end
 
 
