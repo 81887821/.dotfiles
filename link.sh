@@ -13,6 +13,7 @@ readonly dot_files=(
     '.config/systemd/user/vboxviewer@.service'
     '.config/systemd/user/vboxvm@.service'
     'bin/vboxvm-stop.sh'
+    '.config/systemd/user/tmux.service'
 )
 readonly dot_file_packages=(
     'fish'
@@ -23,6 +24,7 @@ readonly dot_file_packages=(
     'virtualbox systemd'
     'virtualbox systemd'
     'virtualbox systemd'
+    'tmux'
 )
 
 link_only_installed=true

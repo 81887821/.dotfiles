@@ -1,0 +1,10 @@
+[Unit]
+Description=Terminal Multiplexer Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux new-session -s systemd -d
+Environment=HOME=%h
+
+[Install]
+WantedBy=default.target
