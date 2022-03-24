@@ -2,6 +2,7 @@ set --export DOTNET_CLI_TELEMETRY_OPTOUT 1
 set --export DBUS_SESSION_BUS_ADDRESS unix:path=/run/user/(id -u)/bus
 set --export XDG_RUNTIME_DIR /run/user/(id -u)
 set --export GPG_TTY (tty)
+set --export COLORFGBG ";0"
 
 
 test -d $HOME/bin; and set PATH $PATH "$HOME/bin"
@@ -22,6 +23,11 @@ end
 function make --description 'GNU make utility to maintain groups of programs'
   set -l param -j(nproc)
   command make $param $argv
+end
+
+function ip --description 'Show / manipulate routing, network devices, interfaces and tunnels'
+  set -l param --color=auto
+  command ip $param $argv
 end
 
 
