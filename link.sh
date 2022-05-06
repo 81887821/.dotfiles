@@ -29,6 +29,8 @@ readonly dot_file_packages=(
 
 link_only_installed=true
 ln_flags=''
+dry_run=false
+create_parent=false
 
 function main() {
     parse_arguments "$@"
@@ -43,11 +45,17 @@ function main() {
 function parse_arguments() {
     while [ $# -gt 0 ]; do
         case "$1" in
-            '--all')
+            '-a' | '--all')
                 link_only_installed=false
                 ;;
-            '--force')
+            '-f' | '--force')
                 ln_flags='-f'
+                ;;
+            '-d' | '--dry-run')
+                dry_run=true
+                ;;
+            '-p' | '--create-parent')
+                create_parent=true
                 ;;
             '-h' | '--help')
                 print_usage
@@ -65,8 +73,10 @@ function parse_arguments() {
 function print_usage() {
     echo "$0 [options]"
     echo "options: "
-    echo "  --all: link all files even if related package is not installed."
-    echo "  --force: use -f flag on ln"
+    echo "  -a or --all: link all files even if related package is not installed."
+    echo "  -f or --force: use -f flag on ln"
+    echo "  -d or --dry-run: print command without executing it"
+    echo "  -p or --create-parent: create parent directory"
     echo "  -h or --help: print usage and exit."
 }
 
@@ -97,7 +107,27 @@ function make_link() {
     local target_file="$(get_absolute_directory_path_of_executable)/home/${1}"
     local link_file="${HOME}/${1}"
 
-    ln -s ${ln_flags} "$(to_relative_target_path "${target_file}" "${link_file}")" "${link_file}"
+    if ${create_parent}; then
+        make_parent_directory "${link_file}"
+    fi
+
+    if ${dry_run}; then
+        echo ln -s ${ln_flags} "$(to_relative_target_path "${target_file}" "${link_file}")" "${link_file}"
+    else
+        ln -s ${ln_flags} "$(to_relative_target_path "${target_file}" "${link_file}")" "${link_file}"
+    fi
+}
+
+function make_parent_directory() {
+    local parent="$(dirname "${0}")"
+
+    if [ ! -e "${parent}" ]; then
+        if ${dry_run}; then
+            echo mkdir -p "${parent}"
+        else
+            mkdir -p "${parent}"
+        fi
+    fi
 }
 
 main "$@"
