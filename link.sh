@@ -6,6 +6,11 @@ source "${0%/*}/library/package.sh" 2>/dev/null || source "library/package.sh" |
 
 readonly dot_files=(
     '.config/fish/config.fish'
+    '.config/fish/functions/ip.fish'
+    '.config/fish/functions/ls.fish'
+    '.config/fish/functions/make.fish'
+    '.config/fish/conf.d/color.fish'
+    '.config/fish/conf.d/tide_config.fish'
     '.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml'
     '.config/systemd/user/discord.service'
     '.config/systemd/user/ibus.service'
@@ -16,6 +21,11 @@ readonly dot_files=(
     '.config/systemd/user/tmux.service'
 )
 readonly dot_file_packages=(
+    'fish'
+    'fish iproute2'
+    'fish coreutils'
+    'fish make'
+    'fish'
     'fish'
     'xfce4'
     'discord firejail systemd'
