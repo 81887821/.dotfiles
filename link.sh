@@ -12,7 +12,7 @@ readonly dot_files=(
     '.config/systemd/user/vboxhost.service'
     '.config/systemd/user/vboxviewer@.service'
     '.config/systemd/user/vboxvm@.service'
-    'bin/vboxvm-stop.sh'
+    '.local/bin/vboxvm-stop.sh'
     '.config/systemd/user/tmux.service'
 )
 readonly dot_file_packages=(
