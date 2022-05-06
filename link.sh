@@ -24,7 +24,7 @@ readonly dot_file_packages=(
     'virtualbox systemd'
     'virtualbox systemd'
     'virtualbox systemd'
-    'tmux'
+    'tmux systemd'
 )
 
 link_only_installed=true
