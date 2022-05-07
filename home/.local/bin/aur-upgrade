@@ -1,0 +1,58 @@
+#!/bin/bash
+
+source "${HOME}/.local/lib/aur-common.sh"
+
+use_tmpfs=false
+
+function main() {
+    parse_arguments "$@"
+    prepare_directory "${use_tmpfs}"
+    try_upgrade_packages
+    clean_up_directory "${use_tmpfs}"
+}
+
+function parse_arguments() {
+    while [ $# -gt 0 ]; do
+        case "${1}" in
+            '-t' | '--use-tmpfs')
+                use_tmpfs=true
+                ;;
+            *)
+                echo "Invalid option: ${1}"
+                exit 1
+                ;;
+        esac
+        shift
+    done
+}
+
+function try_upgrade_packages() {
+    local package
+
+    for package in $(ls "${AUR_DIRECTORY}"); do
+        cd "${AUR_DIRECTORY}/${package}"
+
+        echo -n "[${package}] "
+        git fetch --all --prune --quiet || error "Failed to fetch" || continue
+
+        local head=$(git rev-parse 'HEAD') || error "Failed to rev-parse HEAD" || continue
+        local local_branch=$(git rev-parse --abbrev-ref 'HEAD') || error "Failed to rev-parse local branch" || continue
+        local upstream=$(git rev-parse 'HEAD@{upstream}') || error "Failed to rev-parse upstream" || continue
+        local upstream_branch=$(git rev-parse --abbrev-ref 'HEAD@{upstream}') || error "Failed to rev-parse upstream branch" || continue
+
+        if [ "${head}" != "${upstream}" ]; then
+            check_package_diff "${head}" "${upstream}"
+
+            if ask_yes_no "Upgrade ${package}?" true; then
+                git merge --ff-only --quiet "${upstream_branch}" || error "Failed to fast-forward upstream branch" || continue
+                build_package "${package}" || error "  Manual fix needed: previous head = ${head}"
+            fi
+        else
+            echo "Up to date"
+        fi
+    done
+
+    install_built_packages
+}
+
+main "$@"

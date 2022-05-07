@@ -1,0 +1,36 @@
+#!/bin/bash
+
+source "${HOME}/.local/lib/aur-common.sh"
+
+function main() {
+    check_arguments "$@"
+    uninstall_packages "$@" || return $?
+    remove_repositories "$@"
+}
+
+function check_arguments() {
+    if [ $# -le 0 ]; then
+        die "No package specified"
+    fi
+}
+
+function uninstall_packages() {
+    sudo pacman -Rn "$@"
+}
+
+function remove_repositories() {
+    local package
+
+    while [ $# -gt 0 ]; do
+        package="${1}"
+
+        if [ ! -d "${AUR_DIRECTORY}/${package}" ]; then
+            error "[${package}] Package repository doesn't exist"
+        else
+            rm -rf "${AUR_DIRECTORY}/${package}"
+        fi
+        shift
+    done
+}
+
+main "$@"

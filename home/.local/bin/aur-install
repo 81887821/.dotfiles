@@ -1,0 +1,71 @@
+#!/bin/bash
+
+source "${HOME}/.local/lib/aur-common.sh"
+
+readonly AUR_REPOSITORY_BASE="https://aur.archlinux.org"
+num_parsed_arguments=0
+use_tmpfs=false
+
+function main() {
+    parse_arguments "$@"
+    shift "${num_parsed_arguments}"
+    prepare_directory "${use_tmpfs}"
+    try_install_packages "$@" || abort_installation "$@"
+    clean_up_directory "${use_tmpfs}"
+}
+
+function parse_arguments() {
+    if [ $# -le 0 ]; then
+        die "No package specified"
+    fi
+
+    while [ $# -gt 0 ]; do
+        case "${1}" in
+            '-h' | '--help')
+                print_help
+                exit 0
+                ;;
+            '-t' | '--use-tmpfs')
+                use_tmpfs=true
+                ;;
+            *)
+                return 0
+                ;;
+        esac
+        num_parsed_arguments=$(expr num_parsed_arguments + 1)
+        shift
+    done
+}
+
+function print_help() {
+    echo "${0} [options] [packages]..."
+    echo "options:"
+    echo "  -h or --help: print usage and exit"
+    echo "  -t or --use-tmpfs: build packages in tmpfs"
+}
+
+function try_install_packages() {
+    local package
+
+    while [ $# -gt 0 ]; do
+        package="${1}"
+
+        download_package "$package" || return 1
+        check_package_all "$package"
+        if ask_yes_no "Install ${package}?" true; then
+            build_package "${package}" || return 1
+        fi
+        shift
+    done
+
+    install_built_packages
+}
+
+function download_package() {
+    local package="${1}"
+
+    cd "${AUR_DIRECTORY}"
+    git clone "${AUR_REPOSITORY_BASE}/${package}.git" || error "[${package}] Cannot clone repository." || return 1
+}
+
+main "$@"

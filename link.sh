@@ -19,6 +19,10 @@ readonly dot_files=(
     '.config/systemd/user/vboxvm@.service'
     '.local/bin/vboxvm-stop.sh'
     '.config/systemd/user/tmux.service'
+    '.local/bin/aur-install'
+    '.local/bin/aur-uninstall'
+    '.local/bin/aur-upgrade'
+    '.local/lib/aur-common.sh'
 )
 readonly dot_file_packages=(
     'fish'
@@ -35,6 +39,10 @@ readonly dot_file_packages=(
     'virtualbox systemd'
     'virtualbox systemd'
     'tmux systemd'
+    'pacman'
+    'pacman'
+    'pacman'
+    'pacman'
 )
 
 link_only_installed=true
