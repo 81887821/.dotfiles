@@ -9,3 +9,7 @@ if [ (id -u) = 0 ]
     test -d /usr/sbin -a ! -L /usr/sbin; and set PATH $PATH /usr/sbin
     test -d /usr/local/sbin -a ! -L /usr/local/sbin; and set PATH $PATH /usr/local/sbin
 end
+
+if [ -d /opt/asdf-vm ]
+    source /opt/asdf-vm/asdf.fish
+end
