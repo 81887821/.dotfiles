@@ -48,7 +48,7 @@ readonly dot_file_packages=(
 link_only_installed=true
 ln_flags=''
 dry_run=false
-create_parent=false
+create_parents=false
 
 function main() {
     parse_arguments "$@"
@@ -72,8 +72,8 @@ function parse_arguments() {
             '-d' | '--dry-run')
                 dry_run=true
                 ;;
-            '-p' | '--create-parent')
-                create_parent=true
+            '-p' | '--parents')
+                create_parents=true
                 ;;
             '-h' | '--help')
                 print_usage
@@ -125,7 +125,7 @@ function make_link() {
     local target_file="$(get_absolute_directory_path_of_executable)/home/${1}"
     local link_file="${HOME}/${1}"
 
-    if ${create_parent}; then
+    if ${create_parents}; then
         make_parent_directory "${link_file}"
     fi
 
@@ -137,7 +137,7 @@ function make_link() {
 }
 
 function make_parent_directory() {
-    local parent="$(dirname "${0}")"
+    local parent="$(dirname "${1}")"
 
     if [ ! -e "${parent}" ]; then
         if ${dry_run}; then
