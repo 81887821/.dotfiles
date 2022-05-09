@@ -97,7 +97,9 @@ function build_package() {
 }
 
 function install_built_packages() {
-    sudo pacman -U "${package_directory}"/*.pkg*
+    if ls "${package_directory}"/*.pkg* >/dev/null 2>/dev/null; then
+        sudo pacman -U --needed "${package_directory}"/*.pkg*
+    fi
 }
 
 function abort_installation() {
