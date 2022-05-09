@@ -111,5 +111,6 @@ function abort_installation() {
         if ! pacman -Qi "${package}" >/dev/null 2>/dev/null; then
             rm -rf "${AUR_DIRECTORY}/${package}"
         fi
+        shift
     done
 }
