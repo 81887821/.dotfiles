@@ -1,0 +1,3 @@
+[submodule "external/kubectl-aliases"]
+	path = external/kubectl-aliases
+	url = https://github.com/ahmetb/kubectl-aliases.git
