@@ -13,3 +13,8 @@ end
 if [ -d /opt/asdf-vm ]
     source /opt/asdf-vm/asdf.fish
 end
+
+if which ruby >/dev/null 2>/dev/null
+    set --export GEM_HOME (ruby -e 'puts Gem.user_dir')
+    set --export PATH $PATH "$GEM_HOME/bin"
+end
