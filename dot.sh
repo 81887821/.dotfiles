@@ -2,7 +2,7 @@
 
 source "${0%/*}/library/path.sh" 2>/dev/null || source "library/path.sh" || exit 1
 source "${0%/*}/library/common.sh" 2>/dev/null || source "library/common.sh" || exit 1
-load_libraries 'package.sh' 'method.sh' 'argument.sh'
+load_libraries 'package.sh' 'method.sh' 'argument.sh' 'color.sh'
 
 all_packages=false
 overwrite=false
@@ -11,21 +11,28 @@ create_parents=false
 contexts=('default')
 file_list="$(get_absolute_directory_path_of_executable)/dotfiles.csv"
 
-function main() {
-    parse_arguments "$@"
-    install
+function do_operation() {
+    local operation="${1}"; shift
+    local operation_path="$(get_absolute_directory_path_of_executable)/library/operations/${operation}.sh"
+
+    if [ -f "${operation_path}" ]; then
+        source "${operation_path}"
+        ${operation}_parse_arguments "$@"
+        ${operation}
+    else
+        print_help
+        return 1
+    fi
 }
 
-function install() {
-    local context method packages path
+function print_help() {
+    local operation
 
-    while IFS=',' read context method packages path; do
-        if contains "${context}" "${contexts[@]}"; then
-            if ${all_packages} || is_installed "${packages}"; then
-                ${method}_install "${path}"
-            fi
-        fi
-    done <<< "$(tail -n+2 "${file_list}")"
+    echo "$(basename $0) OPERATION [OPTIONS]"
+    echo "Available operations: "
+    for operation in $(ls "$(get_absolute_directory_path_of_executable)/library/operations"); do
+        echo "    ${operation%.sh}"
+    done
 }
 
-main "$@"
+do_operation "$@"

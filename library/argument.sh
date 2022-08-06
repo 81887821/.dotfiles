@@ -63,14 +63,14 @@ function parse_arguments() {
 }
 
 function print_usage() {
-    echo "$0 [options]"
+    echo "$(basename $0) OPERATION [OPTIONS]"
     echo "options: "
-    echo "  -a or --all-packages: install all files even if related package is not installed."
+    echo "  -a or --all-packages: install all files even if related package is not installed"
     echo "  -c or --with-context=CONTEXT: install files within the CONTEXT"
     echo "  -d or --dry-run: print command without executing it"
     echo "  -e or --without-context=CONTEXT: do not install files within the CONTEXT"
     echo "  -f or --overwrite: overwrite existing files"
-    echo "  -h or --help: print usage and exit."
+    echo "  -h or --help: print usage and exit"
     echo "  -l or --use-list=FILE_LIST: use FILE_LIST instead of default dotfiles.csv"
     echo "  -p or --create-parents: create parent directory"
 }

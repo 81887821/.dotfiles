@@ -50,7 +50,7 @@ function cp_state() {
         return "${STATE_NOT_INSTALLED}"
     elif [ ! -f "${destination}" ]; then
         return "${STATE_MODIFIED}"
-    elif [ "$(md5sum "${source}" | head -c32)" -eq "$(md5sum "${destination}" | head -c32)" ]; then
+    elif [ "$(md5sum "${source}" | head -c32)" == "$(md5sum "${destination}" | head -c32)" ]; then
         return "${STATE_UP_TO_DATE}"
     elif [ "${destination}" -ot "${source}" ]; then
         return "${STATE_OUTDATED}"

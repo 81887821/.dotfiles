@@ -55,12 +55,13 @@ function ln_load() {
 function ln_state() {
     local target_file="$(get_absolute_directory_path_of_executable)/home/${1}"
     local link_file="${HOME}/${1}"
+    local realative_link_target="$(to_relative_target_path "${target_file}" "${link_file}")"
 
     if [ ! -e "${link_file}" ]; then
         return "${STATE_NOT_INSTALLED}"
     elif [ ! -L "${link_file}" ]; then
         return "${STATE_MODIFIED}"
-    elif [ "$(readlink -nf "${link_file}")" != "${target_file}" ]; then
+    elif [ "$(readlink -n "${link_file}")" != "${realative_link_target}" ]; then
         return "${STATE_MODIFIED}"
     else
         return "${STATE_UP_TO_DATE}"
