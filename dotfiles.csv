@@ -1,4 +1,5 @@
 context,method,packages,path
+default,ln,,.local/bin/dot
 default,ln,fish,.config/fish/conf.d/color.fish
 default,ln,fish kubectl,.config/fish/conf.d/kube_aliases.fish
 default,ln,fish kubectl,.config/fish/conf.d/kubectl_aliases.fish
