@@ -9,6 +9,14 @@ function die() {
     exit 1
 }
 
+function load_libraries() {
+    local library
+
+    for library in "$@"; do
+        source "$(get_absolute_directory_path_of_executable)/library/${library}" || die "Failed to source ${library}"
+    done
+}
+
 function contains() {
     local value="${1}"; shift
     local array=("$@")
@@ -21,4 +29,16 @@ function contains() {
     done
 
     return 1
+}
+
+function make_parent_directory() {
+    local parent="$(dirname "${1}")"
+
+    if [ ! -e "${parent}" ]; then
+        if ${dry_run}; then
+            echo mkdir -p "${parent}"
+        else
+            mkdir -p "${parent}"
+        fi
+    fi
 }

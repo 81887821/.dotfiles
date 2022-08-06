@@ -9,18 +9,6 @@ readonly STATE_NOT_IMPLEMENTED=5
 
 readonly METHODS=('ln' 'cp')
 
-function make_parent_directory() {
-    local parent="$(dirname "${1}")"
-
-    if [ ! -e "${parent}" ]; then
-        if ${dry_run}; then
-            echo mkdir -p "${parent}"
-        else
-            mkdir -p "${parent}"
-        fi
-    fi
-}
-
 function load_methods() {
     local method
     for method in "${METHODS[@]}"; do
