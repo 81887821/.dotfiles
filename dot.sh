@@ -9,6 +9,7 @@ overwrite=false
 dry_run=false
 create_parents=false
 contexts=('default')
+file_list="$(get_absolute_directory_path_of_executable)/dotfiles.csv"
 
 function main() {
     parse_arguments "$@"
@@ -24,7 +25,7 @@ function install() {
                 ${method}_install "${path}"
             fi
         fi
-    done <<< "$(tail -n+2 "$(get_absolute_directory_path_of_executable)/dotfiles.csv")"
+    done <<< "$(tail -n+2 "${file_list}")"
 }
 
 main "$@"

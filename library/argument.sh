@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function parse_arguments() {
-    local arguments=$(getopt --options ac:de:fhp --longoptions all-packages,with-context:,dry-run,without-context:,overwrite,help,create-parents --name $(basename ${0}) -- "$@")
+    local arguments=$(getopt --options ac:de:fhl:p --longoptions all-packages,with-context:,dry-run,without-context:,overwrite,help,use-list:,create-parents --name $(basename ${0}) -- "$@")
     if [ $? -ne 0 ]; then
         print_usage
         exit 1
@@ -42,6 +42,10 @@ function parse_arguments() {
                 print_usage
                 exit 0
                 ;;
+            '-l' | '--use-list')
+                file_list="$2"
+                shift
+                ;;
             '-p' | '--create-parents')
                 create_parents=true
                 ;;
@@ -62,10 +66,11 @@ function print_usage() {
     echo "$0 [options]"
     echo "options: "
     echo "  -a or --all-packages: install all files even if related package is not installed."
-    echo "  -c or --with-context: install files within the context"
+    echo "  -c or --with-context=CONTEXT: install files within the CONTEXT"
     echo "  -d or --dry-run: print command without executing it"
-    echo "  -e or --without-context: do not install files within the context"
+    echo "  -e or --without-context=CONTEXT: do not install files within the CONTEXT"
     echo "  -f or --overwrite: overwrite existing files"
     echo "  -h or --help: print usage and exit."
+    echo "  -l or --use-list=FILE_LIST: use FILE_LIST instead of default dotfiles.csv"
     echo "  -p or --create-parents: create parent directory"
 }
