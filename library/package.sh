@@ -5,18 +5,20 @@ readonly UBUNTU='Ubuntu'
 
 function get_linux_distribution() {
     if [ -r '/etc/os-release' ]; then
-        source /etc/os-release
+        source /etc/os-release || die "Failed to source /etc/os-release"
         echo "${NAME}"
     else
         die "Cannot read /etc/os-release"
     fi
 }
 
-function load_functions() {
+function load_package_functions() {
     local distribution="${1}"
     local library_path="$(get_absolute_directory_path_of_executable)/library/distributions/${distribution}.sh"
 
-    if [ -f "${library_path}" ]; then
+    if [ "${distribution}" == "" ]; then
+        die "No distribution information."
+    elif [ -f "${library_path}" ]; then
         source "${library_path}" || die "Loading ${library_path} failed."
     else
         die "Library for ${distribution} does not exist."
@@ -25,10 +27,7 @@ function load_functions() {
 
 function is_installed() {
     local packages="${@}"
-    local distribution="$(get_linux_distribution)"
     local package
-
-    load_functions "${distribution}"
 
     for package in ${packages}; do
         $(get_package_finder) "$(package_mapping "${package}")" 1>/dev/null 2>/dev/null || return 1
@@ -36,3 +35,5 @@ function is_installed() {
 
     return 0
 }
+
+load_package_functions "$(get_linux_distribution)"
