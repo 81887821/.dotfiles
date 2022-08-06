@@ -14,7 +14,7 @@ function get_linux_distribution() {
 
 function load_package_functions() {
     local distribution="${1}"
-    local library_path="$(get_absolute_directory_path_of_executable)/library/distributions/${distribution}.sh"
+    local library_path="${DOT_ROOT}/library/distributions/${distribution}.sh"
 
     if [ "${distribution}" == "" ]; then
         die "No distribution information."

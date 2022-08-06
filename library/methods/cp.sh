@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function cp_install() {
-    local source="$(get_absolute_directory_path_of_executable)/home/${1}"
+    local source="${DOT_ROOT}/home/${1}"
     local destination="${HOME}/${1}"
     local flags='--reflink=auto'
 
@@ -31,7 +31,7 @@ function cp_uninstall() {
 }
 
 function cp_load() {
-    local destination="$(get_absolute_directory_path_of_executable)/home/${1}"
+    local destination="${DOT_ROOT}/home/${1}"
     local source="${HOME}/${1}"
     local flags='--reflink=auto'
 
@@ -43,7 +43,7 @@ function cp_load() {
 }
 
 function cp_state() {
-    local source="$(get_absolute_directory_path_of_executable)/home/${1}"
+    local source="${DOT_ROOT}/home/${1}"
     local destination="${HOME}/${1}"
 
     if [ ! -e "${destination}" ]; then

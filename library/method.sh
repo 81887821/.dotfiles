@@ -12,7 +12,7 @@ readonly METHODS=('ln' 'cp')
 function load_methods() {
     local method
     for method in "${METHODS[@]}"; do
-        source "$(get_absolute_directory_path_of_executable)/library/methods/${method}.sh" || die "Failed to load method: ${method}"
+        source "${DOT_ROOT}/library/methods/${method}.sh" || die "Failed to load method: ${method}"
     done
 }
 

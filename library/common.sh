@@ -13,7 +13,7 @@ function load_libraries() {
     local library
 
     for library in "$@"; do
-        source "$(get_absolute_directory_path_of_executable)/library/${library}" || die "Failed to source ${library}"
+        source "${DOT_ROOT}/library/${library}" || die "Failed to source ${library}"
     done
 }
 

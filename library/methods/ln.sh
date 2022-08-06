@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function ln_install() {
-    local target_file="$(get_absolute_directory_path_of_executable)/home/${1}"
+    local target_file="${DOT_ROOT}/home/${1}"
     local link_file="${HOME}/${1}"
     local flags='-s'
 
@@ -31,7 +31,7 @@ function ln_remove() {
 }
 
 function ln_load() {
-    local target_file="$(get_absolute_directory_path_of_executable)/home/${1}"
+    local target_file="${DOT_ROOT}/home/${1}"
     local link_file="${HOME}/${1}"
 
     ln_state ${1}
@@ -53,7 +53,7 @@ function ln_load() {
 }
 
 function ln_state() {
-    local target_file="$(get_absolute_directory_path_of_executable)/home/${1}"
+    local target_file="${DOT_ROOT}/home/${1}"
     local link_file="${HOME}/${1}"
     local realative_link_target="$(to_relative_target_path "${target_file}" "${link_file}")"
 
