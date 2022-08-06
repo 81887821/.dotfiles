@@ -4,6 +4,8 @@ source "${0%/*}/library/common.sh" 2>/dev/null || source "library/common.sh" || 
 source "${0%/*}/library/path.sh" 2>/dev/null || source "library/path.sh" || exit 1
 source "${0%/*}/library/package.sh" 2>/dev/null || source "library/package.sh" || exit 1
 
+source "$(get_absolute_directory_path_of_executable)/arguments.sh" || die "Failed to source arguments.sh"
+
 readonly dot_files=(
     '.config/fish/config.fish'
     '.config/fish/functions/ip.fish'
@@ -66,44 +68,6 @@ function main() {
     else
         link_all
     fi
-}
-
-function parse_arguments() {
-    while [ $# -gt 0 ]; do
-        case "$1" in
-            '-a' | '--all')
-                link_only_installed=false
-                ;;
-            '-f' | '--force')
-                ln_flags='-f'
-                ;;
-            '-d' | '--dry-run')
-                dry_run=true
-                ;;
-            '-p' | '--parents')
-                create_parents=true
-                ;;
-            '-h' | '--help')
-                print_usage
-                exit 0
-                ;;
-            *)
-                print_usage
-                die "Invalid option: $1"
-                ;;
-        esac
-        shift
-    done
-}
-
-function print_usage() {
-    echo "$0 [options]"
-    echo "options: "
-    echo "  -a or --all: link all files even if related package is not installed."
-    echo "  -f or --force: use -f flag on ln"
-    echo "  -d or --dry-run: print command without executing it"
-    echo "  -p or --create-parent: create parent directory"
-    echo "  -h or --help: print usage and exit."
 }
 
 function link_all() {
