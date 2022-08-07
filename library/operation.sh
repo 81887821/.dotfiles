@@ -41,4 +41,3 @@ readonly RESULT_NOT_INSTALLED="$(print_result_string 'NotInstalled' "${WHITE}" 1
 readonly RESULT_OUTDATED="$(print_result_string 'Outdated' "${YELLO}" 12)"
 readonly RESULT_MODIFIED="$(print_result_string 'Modified' "${YELLO}" 12)"
 readonly RESULT_ERROR="$(print_result_string 'Error' "${RED}" 12)"
-readonly RESULT_NOT_IMPLEMENTED="$(print_result_string 'NotImpled' "${WHITE}" 12)"

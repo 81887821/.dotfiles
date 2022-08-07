@@ -5,7 +5,6 @@ readonly STATE_NOT_INSTALLED=1
 readonly STATE_OUTDATED=2
 readonly STATE_MODIFIED=3
 readonly STATE_ERROR=4
-readonly STATE_NOT_IMPLEMENTED=5
 
 readonly METHODS=('ln' 'cp')
 

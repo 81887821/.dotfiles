@@ -11,7 +11,7 @@ function install() {
                     "${STATE_UP_TO_DATE}")
                         echo "${RESULT_UP_TO_DATE} ${path}"
                         ;;
-                    "${STATE_NOT_INSTALLED}" | "${STATE_OUTDATED}" | "${STATE_MODIFIED}" | "${STATE_NOT_IMPLEMENTED}")
+                    "${STATE_NOT_INSTALLED}" | "${STATE_OUTDATED}" | "${STATE_MODIFIED}")
                         if [ $? -eq "${STATE_MODIFIED}" ] && ! ${overwrite}; then
                             echo "${RESULT_MODIFIED} ${path}"
                             continue

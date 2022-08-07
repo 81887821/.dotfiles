@@ -24,9 +24,6 @@ function status() {
                         echo "${RESULT_ERROR} ${path}"
                         echo "${method}_state returned STATE_ERROR"
                         ;;
-                    "${STATE_NOT_IMPLEMENTED}")
-                        echo "${RESULT_NOT_IMPLEMENTED} ${path}"
-                        ;;
                     *)
                         echo -e "${RESULT_ERROR} ${path}\nInvalid state: $?"
                         ;;
