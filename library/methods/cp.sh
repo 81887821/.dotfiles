@@ -5,10 +5,6 @@ function cp_install() {
     local destination="${HOME}/${1}"
     local flags='--reflink=auto'
 
-    if ! ${overwrite}; then
-        flags="${flags} -n"
-    fi
-
     if ${create_parents}; then
         make_parent_directory "${destination}"
     fi

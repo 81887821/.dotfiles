@@ -3,11 +3,7 @@
 function ln_install() {
     local target_file="${DOT_ROOT}/home/${1}"
     local link_file="${HOME}/${1}"
-    local flags='-s'
-
-    if ${overwrite}; then
-        flags="${flags} -f"
-    fi
+    local flags='-sf'
 
     if ${create_parents}; then
         make_parent_directory "${link_file}"
