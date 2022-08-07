@@ -33,23 +33,13 @@ function ln_remove() {
 function ln_load() {
     local target_file="${DOT_ROOT}/home/${1}"
     local link_file="${HOME}/${1}"
+    local flags='--reflink=auto'
 
-    ln_state ${1}
-    case $? in
-        "${STATE_UP_TO_DATE}" | "${STATE_NOT_INSTALLED}")
-            return 0
-            ;;
-        "${STATE_OUTDATED}" | "${STATE_MODIFIED}")
-            if ${dry_run}; then
-                echo cp --reflink=auto "${link_file}" "${target_file}"
-            else
-                cp --reflink=auto "${link_file}" "${target_file}"
-            fi
-            ;;
-        *)
-            error "ln_load: Invalid state: $?"
-            ;;
-    esac
+    if ${dry_run}; then
+        echo cp ${flags} "${link_file}" "${target_file}"
+    else
+        cp ${flags} "${link_file}" "${target_file}"
+    fi
 }
 
 function ln_state() {
