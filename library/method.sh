@@ -6,7 +6,7 @@ readonly STATE_OUTDATED=2
 readonly STATE_MODIFIED=3
 readonly STATE_ERROR=4
 
-readonly METHODS=('ln' 'cp')
+readonly METHODS=('ln' 'cp' 'gpg')
 
 function load_methods() {
     local method
