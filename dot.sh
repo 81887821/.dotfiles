@@ -3,7 +3,7 @@
 readonly REAL_EXECUTABLE_PATH="$(realpath "$0")"
 readonly DOT_ROOT="${REAL_EXECUTABLE_PATH%/*}"
 source "${DOT_ROOT}/library/common.sh" 2>/dev/null || exit 1
-load_libraries 'path.sh' 'package.sh' 'method.sh' 'argument.sh' 'color.sh'
+load_libraries 'path.sh' 'package.sh' 'method.sh' 'argument.sh' 'color.sh' 'operation.sh'
 
 all_packages=false
 overwrite=false

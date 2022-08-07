@@ -1,12 +1,6 @@
 #!/bin/bash
 
 function status() {
-    local PREFIX_UP_TO_DATE="${BOLD}[${GREEN}  UpToDate  ${WHITE}]${RESET}"
-    local PREFIX_NOT_INSTALLED="${BOLD}[NotInstalled]${RESET}"
-    local PREFIX_OUTDATED="${BOLD}[${YELLO}  Outdated  ${WHITE}]${RESET}"
-    local PREFIX_MODIFIED="${BOLD}[${YELLO}  Modified  ${WHITE}]${RESET}"
-    local PREFIX_ERROR="${BOLD}[${RED}   Error    ${WHITE}]${RESET}"
-    local PREFIX_NOT_IMPLEMENTED="${BOLD}[ NotImpled  ]${RESET}"
     local context method packages path
 
     while IFS=',' read context method packages path; do
@@ -15,26 +9,26 @@ function status() {
                 ${method}_state "${path}"
                 case $? in
                     "${STATE_UP_TO_DATE}")
-                        echo "${PREFIX_UP_TO_DATE} ${path}"
+                        echo "${RESULT_UP_TO_DATE} ${path}"
                         ;;
                     "${STATE_NOT_INSTALLED}")
-                        echo "${PREFIX_NOT_INSTALLED} ${path}"
+                        echo "${RESULT_NOT_INSTALLED} ${path}"
                         ;;
                     "${STATE_OUTDATED}")
-                        echo "${PREFIX_OUTDATED} ${path}"
+                        echo "${RESULT_OUTDATED} ${path}"
                         ;;
                     "${STATE_MODIFIED}")
-                        echo "${PREFIX_MODIFIED} ${path}"
+                        echo "${RESULT_MODIFIED} ${path}"
                         ;;
                     "${STATE_ERROR}")
-                        echo "${PREFIX_ERROR} ${path}"
+                        echo "${RESULT_ERROR} ${path}"
                         echo "${method}_state returned STATE_ERROR"
                         ;;
                     "${STATE_NOT_IMPLEMENTED}")
-                        echo "${PREFIX_NOT_IMPLEMENTED} ${path}"
+                        echo "${RESULT_NOT_IMPLEMENTED} ${path}"
                         ;;
                     *)
-                        echo -e "${PREFIX_ERROR} ${path}\nInvalid state: $?"
+                        echo -e "${RESULT_ERROR} ${path}\nInvalid state: $?"
                         ;;
                 esac
             fi
