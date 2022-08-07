@@ -1,12 +1,12 @@
 #!/bin/bash
 
 function install() {
-    local context method packages path outputs
+    local context method packages path state_outputs outputs
 
     while IFS=',' read context method packages path; do
         if contains "${context}" "${contexts[@]}"; then
             if ${all_packages} || is_installed "${packages}"; then
-                ${method}_state "${path}"
+                state_outputs="$(${method}_state "${path}" 2>&1)"
                 case $? in
                     "${STATE_UP_TO_DATE}")
                         echo "${RESULT_UP_TO_DATE} ${path}"
@@ -25,7 +25,7 @@ function install() {
                         fi
                         ;;
                     *)
-                        echo -e "${RESULT_ERROR} ${path}\nFailed to get state: $?"
+                        echo -e "${RESULT_ERROR} ${path}\nFailed to get state: $?\n${state_outputs}"
                         ;;
                 esac
             fi

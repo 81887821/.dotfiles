@@ -1,12 +1,12 @@
 #!/bin/bash
 
 function load() {
-    local context method packages path outputs
+    local context method packages path state_outputs outputs
 
     while IFS=',' read context method packages path; do
         if contains "${context}" "${contexts[@]}"; then
             if ${all_packages} || is_installed "${packages}"; then
-                ${method}_state "${path}"
+                state_outputs="$(${method}_state "${path}" 2>&1)"
                 case $? in
                     "${STATE_UP_TO_DATE}")
                         echo "${RESULT_UP_TO_DATE} ${path}"
@@ -18,7 +18,7 @@ function load() {
                         echo "${RESULT_OUTDATED} ${path}"
                         ;;
                     "${STATE_MODIFIED}")
-                        if outputs="$(${method}_load "${path}")"; then
+                        if outputs="$(${method}_load "${path}" 2>&1)"; then
                             echo "${RESULT_OK} ${path}"
                         else
                             echo "${RESULT_FAILED} ${path}"
@@ -26,7 +26,7 @@ function load() {
                         fi
                         ;;
                     *)
-                        echo -e "${RESULT_ERROR} ${path}\nFailed to get state: $?"
+                        echo -e "${RESULT_ERROR} ${path}\nFailed to get state: $?\n${state_outputs}"
                         ;;
                 esac
             fi
