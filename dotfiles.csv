@@ -22,3 +22,4 @@ default,ln,pacman,.local/bin/aur-uninstall
 default,ln,pacman,.local/bin/aur-upgrade
 default,ln,virtualbox systemd,.local/bin/vboxvm-stop.sh
 default,ln,pacman,.local/lib/aur-common.sh
+devsisters,gpg,fish,.config/fish/conf.d/devsisters.fish
