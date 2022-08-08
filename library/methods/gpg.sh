@@ -45,9 +45,9 @@ function gpg_load() {
     done
 
     if ${dry_run}; then
-        echo gpg ${gpg_common_flags} --armor --output "${destination}" ${recipient_flags} --encrypt "${source}"
+        echo gpg ${gpg_common_flags} --armor --output "${destination}" ${recipient_flags} --encrypt --sign "${source}"
     else
-        gpg ${gpg_common_flags} --armor --output "${destination}" ${recipient_flags} --encrypt "${source}"
+        gpg ${gpg_common_flags} --armor --output "${destination}" ${recipient_flags} --encrypt --sign "${source}"
     fi
 }
 
