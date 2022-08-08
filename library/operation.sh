@@ -31,7 +31,7 @@ function print_result_string() {
         i=$(expr "${i}" + 1)
     done
 
-    echo -n "${WHITE}]${RESET}"
+    echo -n "${WHITE}]${NORMAL}"
 }
 
 readonly RESULT_OK="$(print_result_string 'OK' "${GREEN}" 12)"
