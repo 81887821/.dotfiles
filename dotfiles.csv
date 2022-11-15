@@ -1,9 +1,11 @@
 context,method,packages,path
-default,ln,,.local/bin/dotfiles
 default,ln,fish,.config/fish/conf.d/color.fish
+devsisters,gpg,fish,.config/fish/conf.d/devsisters.fish
 default,ln,fish git,.config/fish/conf.d/git.fish
+default,ln,fish kitty,.config/fish/conf.d/kitty.fish
 default,ln,fish kubectl,.config/fish/conf.d/kube_aliases.fish
 default,ln,fish kubectl,.config/fish/conf.d/kubectl_aliases.fish
+default,ln,fish terraform,.config/fish/conf.d/terraform.fish
 default,ln,fish tfswitch,.config/fish/conf.d/tfswitch.fish
 default,ln,fish,.config/fish/conf.d/tide_config.fish
 default,ln,fish,.config/fish/config.fish
@@ -11,7 +13,6 @@ default,ln,fish git,.config/fish/functions/cgr.fish
 default,ln,fish iproute2,.config/fish/functions/ip.fish
 default,ln,fish coreutils,.config/fish/functions/ls.fish
 default,ln,fish make,.config/fish/functions/make.fish
-default,ln,fish terraform,.config/fish/conf.d/terraform.fish
 default,ln,discord firejail systemd,.config/systemd/user/discord.service
 default,ln,ibus systemd,.config/systemd/user/ibus.service
 default,ln,tmux systemd,.config/systemd/user/tmux.service
@@ -22,6 +23,6 @@ default,cp,xfce4,.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcu
 default,ln,pacman,.local/bin/aur-install
 default,ln,pacman,.local/bin/aur-uninstall
 default,ln,pacman,.local/bin/aur-upgrade
+default,ln,,.local/bin/dotfiles
 default,ln,virtualbox systemd,.local/bin/vboxvm-stop.sh
 default,ln,pacman,.local/lib/aur-common.sh
-devsisters,gpg,fish,.config/fish/conf.d/devsisters.fish
