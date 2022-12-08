@@ -1,4 +1,5 @@
 context,method,packages,path
+default,ln,code,.config/Code/User/settings.json
 default,ln,fish,.config/fish/conf.d/color.fish
 devsisters,gpg,fish,.config/fish/conf.d/devsisters.fish
 default,ln,fish git,.config/fish/conf.d/git.fish
