@@ -5,7 +5,6 @@
     "editor.wordWrap": "on",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "modificationsIfAvailable",
     "diffEditor.ignoreTrimWhitespace": false,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
@@ -15,5 +14,13 @@
 
     ],
     "go.autocompleteUnimportedPackages": true,
-    "terraform.codelens.referenceCount": true
+    "terraform.codelens.referenceCount": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "[go]":{
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    }
 }
