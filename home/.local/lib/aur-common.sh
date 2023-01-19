@@ -98,7 +98,11 @@ function build_package() {
 
 function install_built_packages() {
     if ls "${package_directory}"/*.pkg* >/dev/null 2>/dev/null; then
-        sudo pacman -U --needed "${package_directory}"/*.pkg*
+        while ! sudo pacman -U --needed "${package_directory}"/*.pkg*; do
+            if ask_yes_no "Package install failed. Abort?"; then
+                break
+            fi
+        done
     fi
 }
 
