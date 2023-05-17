@@ -2,7 +2,7 @@
 
 readonly gpg_recipients=(
     '3864871638B98CC9BD9D9E5109D5AE83CE697C99'
-    '0E4C641825B01DA187E5B6E270D66C404222EC44'
+    'EB77D723D9E0ECAE60008F57F3130E37FDBAA1DB'
 )
 readonly gpg_common_flags='--status-file=/dev/null --batch --yes'
 
