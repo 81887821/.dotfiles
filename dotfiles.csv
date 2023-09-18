@@ -9,6 +9,7 @@ default,ln,fish kubectl,.config/fish/conf.d/kubectl_aliases.fish
 default,ln,fish terraform,.config/fish/conf.d/terraform.fish
 default,ln,fish tfswitch,.config/fish/conf.d/tfswitch.fish
 default,ln,fish,.config/fish/conf.d/tide_config.fish
+default,ln,fish xclip,.config/fish/conf.d/xclip.fish
 default,ln,fish,.config/fish/config.fish
 default,ln,fish git,.config/fish/functions/cgr.fish
 default,ln,fish iproute2,.config/fish/functions/ip.fish
