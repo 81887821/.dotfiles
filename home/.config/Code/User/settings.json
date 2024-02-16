@@ -3,24 +3,60 @@
     "redhat.telemetry.enabled": true,
     "editor.renderWhitespace": "all",
     "editor.wordWrap": "on",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "files.autoSave": "onFocusChange",
-    "settingsSync.ignoredExtensions": [
-
-    ],
+    "settingsSync.ignoredExtensions": [],
     "go.autocompleteUnimportedPackages": true,
     "terraform.codelens.referenceCount": true,
-    "editor.formatOnSaveMode": "modificationsIfAvailable",
-    "[go]":{
+    "[go]": {
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file",
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         },
+    },
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "disabled"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "php.format.codeStyle": "Off",
+    "[jsonnet]": {
+        "editor.formatOnSave": false,
+    },
+    "[yaml]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "terraform.languageServer.enable": true,
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "editor.insertSpaces": true,
+    "git.openRepositoryInParentFolders": "always",
+    "window.title": "${dirty}${rootName}${separator}${profileName}${separator}${appName}",
+    "vim.useSystemClipboard": true,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.advanced": {},
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "rust": false,
+        "terraform": true
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     }
 }
