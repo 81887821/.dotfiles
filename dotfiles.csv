@@ -3,6 +3,7 @@ default,ln,code,.config/Code/User/settings.json
 default,ln,fish,.config/fish/conf.d/color.fish
 devsisters,gpg,fish,.config/fish/conf.d/devsisters.fish
 default,ln,fish git,.config/fish/conf.d/git.fish
+default,ln,fish go,.config/fish/conf.d/go.fish
 default,ln,fish kitty,.config/fish/conf.d/kitty.fish
 default,ln,fish kubectl,.config/fish/conf.d/kube_aliases.fish
 default,ln,fish kubectl,.config/fish/conf.d/kubectl_aliases.fish

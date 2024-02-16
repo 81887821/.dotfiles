@@ -5,7 +5,6 @@ set --export GPG_TTY (tty)
 set --export COLORFGBG ";0"
 
 test -d $HOME/.local/bin; and set PATH $PATH "$HOME/.local/bin"
-test -d $HOME/go/bin; and set PATH $PATH "$HOME/go/bin"
 if [ (id -u) = 0 ]
     test -d /usr/sbin -a ! -L /usr/sbin; and set PATH $PATH /usr/sbin
     test -d /usr/local/sbin -a ! -L /usr/local/sbin; and set PATH $PATH /usr/local/sbin
