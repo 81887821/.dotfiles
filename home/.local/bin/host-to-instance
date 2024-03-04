@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function main() {
+  local host="$1"
+  local provider_id="$(kubectl get nodes "${host}" -o jsonpath={.spec.providerID} 2>/dev/null)"
+  local instance_id="$(echo "${provider_id}" | cut -d/ -f5)"
+  test "${instance_id}" == "" && return 2
+  echo "${instance_id}"
+}
+
+main "$@"

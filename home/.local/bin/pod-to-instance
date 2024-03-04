@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function main() {
+  local pod="$1"
+  local host="$(pod-to-host "${pod}")"
+  local instance_id="$(host-to-instance "${host}")"
+  test "${instance_id}" == "" && return 2
+  echo "${instance_id}"
+}
+
+main "$@"

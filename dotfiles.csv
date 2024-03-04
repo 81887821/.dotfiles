@@ -28,5 +28,9 @@ default,ln,pacman,.local/bin/aur-install
 default,ln,pacman,.local/bin/aur-uninstall
 default,ln,pacman,.local/bin/aur-upgrade
 default,ln,,.local/bin/dotfiles
+default,ln,kubectl,.local/bin/host-to-instance
+default,ln,kubectl,.local/bin/instance-to-host
+default,ln,kubectl,.local/bin/pod-to-host
+default,ln,kubectl,.local/bin/pod-to-instance
 default,ln,virtualbox systemd,.local/bin/vboxvm-stop.sh
 default,ln,pacman,.local/lib/aur-common.sh

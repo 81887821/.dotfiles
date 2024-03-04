@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function main() {
+  local pod="$1"
+  local host="$(kubectl get pods "${pod}" -o jsonpath={.spec.nodeName} 2>/dev/null)" || return 1
+  test "${host}" == "" && return 2
+  echo "${host}"
+}
+
+main "$@"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function main() {
+  local instance_id="$1"
+  local host="$(kubectl get nodes -o custom-columns=Name:.metadata.name,ID:.spec.providerID | grep "${instance_id}" | cut -d' ' -f1)"
+  test "${host}" == "" && return 2
+  echo "${host}"
+}
+
+main "$@"
