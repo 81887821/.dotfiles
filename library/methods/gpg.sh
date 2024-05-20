@@ -1,8 +1,7 @@
 #!/bin/bash
 
 readonly gpg_recipients=(
-    '3864871638B98CC9BD9D9E5109D5AE83CE697C99'
-    'EB77D723D9E0ECAE60008F57F3130E37FDBAA1DB'
+    '92FF9BFB66103D26591660833DE3D0F0ED3BFA9D'
 )
 readonly gpg_common_flags='--status-file=/dev/null --batch --yes'
 
