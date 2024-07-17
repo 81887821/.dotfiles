@@ -32,5 +32,6 @@ default,ln,kubectl,.local/bin/host-to-instance
 default,ln,kubectl,.local/bin/instance-to-host
 default,ln,kubectl,.local/bin/pod-to-host
 default,ln,kubectl,.local/bin/pod-to-instance
+home,ln,fish,.local/bin/rename-photo.fish
 default,ln,virtualbox systemd,.local/bin/vboxvm-stop.sh
 default,ln,pacman,.local/lib/aur-common.sh
