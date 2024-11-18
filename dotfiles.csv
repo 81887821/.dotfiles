@@ -1,5 +1,7 @@
 context,method,packages,path
 default,ln,code,.config/Code/User/settings.json
+default,ln,google-cloud-cli,.config/fish/completions/gcloud.fish
+default,ln,google-cloud-cli,.config/fish/completions/gsutil.fish
 default,ln,fish,.config/fish/conf.d/color.fish
 devsisters,gpg,fish,.config/fish/conf.d/devsisters.fish
 default,ln,fish git,.config/fish/conf.d/git.fish
@@ -13,6 +15,7 @@ default,ln,fish,.config/fish/conf.d/tide_config.fish
 default,ln,fish xclip,.config/fish/conf.d/xclip.fish
 default,ln,fish,.config/fish/config.fish
 default,ln,fish git,.config/fish/functions/cgr.fish
+default,ln,google-cloud-cli,.config/fish/functions/gcloud_sdk_argcomplete.fish
 default,ln,fish iproute2,.config/fish/functions/ip.fish
 default,ln,fish coreutils,.config/fish/functions/ls.fish
 default,ln,fish make,.config/fish/functions/make.fish
