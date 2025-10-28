@@ -25,7 +25,7 @@ default,ln,tmux systemd,.config/systemd/user/tmux.service
 default,ln,virtualbox systemd,.config/systemd/user/vboxhost.service
 default,ln,virtualbox systemd,.config/systemd/user/vboxviewer@.service
 default,ln,virtualbox systemd,.config/systemd/user/vboxvm@.service
-default,ln,terraform,.config/terraform.tfrc
+devsisters,gpg,terraform,.config/terraform.tfrc
 default,cp,xfce4,.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 default,ln,pacman,.local/bin/aur-install
 default,ln,pacman,.local/bin/aur-uninstall
