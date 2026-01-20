@@ -108,7 +108,7 @@ if functions --query tide
   set -U tide_pwd_icon_unwritable 
   set -U tide_pwd_markers '.bzr' '.citc' '.git' '.hg' '.node-version' '.python-version' '.ruby-version' '.shorten_folder_marker' '.svn' '.terraform' 'Cargo.toml' 'composer.json' 'CVS' 'go.mod' 'package.json'
   set -U tide_right_prompt_frame_enabled false
-  set -U tide_right_prompt_items 'status' 'cmd_duration' 'context' 'jobs' 'node' 'python' 'rustc' 'java' 'php' 'ruby' 'go' 'kubectl' 'toolbox' 'terraform' 'aws' 'time'
+  set -U tide_right_prompt_items 'status' 'cmd_duration' 'context' 'jobs' 'direnv' 'node' 'python' 'rustc' 'java' 'php' 'pulumi' 'ruby' 'go' 'gcloud' 'kubectl' 'distrobox' 'toolbox' 'terraform' 'aws' 'nix_shell' 'crystal' 'elixir' 'zig' 'time'
   set -U tide_right_prompt_prefix 
   set -U tide_right_prompt_separator_diff_color
   set -U tide_right_prompt_separator_same_color 
