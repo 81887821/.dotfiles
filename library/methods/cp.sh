@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function cp_install() {
     local source="${DOT_ROOT}/home/${1}"

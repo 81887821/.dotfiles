@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 readonly ARCH_LINUX='Arch Linux'
 readonly UBUNTU='Ubuntu'
@@ -30,7 +30,7 @@ function is_installed() {
     local package
 
     for package in ${packages}; do
-        $(get_package_finder) "$(package_mapping "${package}")" 1>/dev/null 2>/dev/null || return 1
+        is_dist_package_installed "${package}" 1>/dev/null 2>/dev/null || return 1
     done
 
     return 0

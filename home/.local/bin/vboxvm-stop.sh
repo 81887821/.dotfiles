@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 readonly SLEEP_INTERVAL=0.5
 readonly MAXIMUM_COUNT=240

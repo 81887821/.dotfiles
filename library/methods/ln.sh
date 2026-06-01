@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function ln_install() {
     local target_file="${DOT_ROOT}/home/${1}"

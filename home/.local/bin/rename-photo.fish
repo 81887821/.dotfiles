@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
 for file in $argv
     set date_time (exiftool -d '%Y%m%d_%H%M%S' -datetimeoriginal $file | cut -d: -f2 | string trim)

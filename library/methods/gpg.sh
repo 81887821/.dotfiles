@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 readonly gpg_recipients=(
     '92FF9BFB66103D26591660833DE3D0F0ED3BFA9D'

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 readonly STATE_UP_TO_DATE=0
 readonly STATE_NOT_INSTALLED=1

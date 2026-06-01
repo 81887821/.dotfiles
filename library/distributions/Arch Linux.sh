@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-function get_package_finder() {
-    echo 'pacman -Qi'
+function is_dist_package_installed() {
+    local package="$(package_mapping "${1}")"
+
+    pacman -Qi "${package}"
 }
 
 function package_mapping() {

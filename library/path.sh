@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function to_relative_target_path() {
     local target="${1#/}"

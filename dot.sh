@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 readonly REAL_EXECUTABLE_PATH="$(realpath "$0")"
 readonly DOT_ROOT="${REAL_EXECUTABLE_PATH%/*}"

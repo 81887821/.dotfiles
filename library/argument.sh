@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function parse_arguments() {
     local arguments=$(getopt --options ac:de:fhl:p --longoptions all-packages,with-context:,dry-run,without-context:,overwrite,help,use-list:,create-parents --name $(basename ${0}) -- "$@")

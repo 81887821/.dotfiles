@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function load() {
     local context method packages path state_outputs outputs
