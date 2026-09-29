@@ -38,3 +38,4 @@ default,ln,kubectl,.local/bin/pod-to-instance
 home,ln,fish,.local/bin/rename-photo.fish
 default,ln,virtualbox systemd,.local/bin/vboxvm-stop.sh
 default,ln,pacman,.local/lib/aur-common.sh
+default,ln,plasma-desktop,.config/kglobalshortcutsrc
