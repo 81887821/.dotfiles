@@ -1,6 +1,6 @@
 if [ "$XDG_SESSION_TYPE" = "wayland" ]
     abbr --add xi 'wl-copy'
-    abbr --add xo 'wl-paste'
+    abbr --add xo 'wl-paste -n'
     abbr --add xc 'wl-copy </dev/null'
 else
     abbr --add xi 'xclip -in -selection clipboard'
