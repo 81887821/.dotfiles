@@ -44,7 +44,6 @@
     "editor.inlineSuggest.enabled": true,
     "github.copilot.advanced": {},
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "modificationsIfAvailable",
     "github.copilot.enable": {
         "*": true,
         "plaintext": false,
@@ -58,5 +57,6 @@
     "editor.formatOnPaste": true,
     "[typescript]": {
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-    }
+    },
+    "workbench.colorTheme": "Dark Modern"
 }
