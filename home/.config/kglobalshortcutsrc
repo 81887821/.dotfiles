@@ -30,7 +30,7 @@ Lock Session=Meta+L\tScreensaver,Meta+L\tScreensaver,Lock Session
 Log Out=Ctrl+Alt+Del,Ctrl+Alt+Del,Show Logout Screen
 Log Out Without Confirmation=none,,Log Out Without Confirmation
 LogOut=none,,Log Out
-Reboot=none,,Reboot
+Reboot=Alt+F1,,Reboot
 Reboot Without Confirmation=none,,Reboot Without Confirmation
 Shut Down=Alt+Esc,,Shut Down
 _k_friendly_name=Session Management
@@ -287,8 +287,6 @@ _launch=Ctrl+Shift+Esc
 _launch=Meta+.
 
 [services][org.kde.spectacle.desktop]
-CurrentMonitorScreenShot=
-OpenWithoutScreenshot=
 RecordRegion=none
 RecordScreen=none
 RecordWindow=Ctrl+Alt+Shift+E
